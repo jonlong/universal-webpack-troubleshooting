@@ -1,0 +1,184 @@
+/*------------------------------------*\
+    #Settings
+\*------------------------------------*/
+
+@theme-name: 'default';
+@base-img-url: '/images';
+@base-font-url: '/fonts';
+
+/*------------------------------------*\
+    #Theme
+\*------------------------------------*/
+
+.theme {
+    @import './themes/@{theme-name}/theme';
+}
+.theme();
+
+/*------------------------------------*\
+    #Tools
+\*------------------------------------*/
+
+@import './mixins';
+
+// Responsive Utils
+@import './responsive';
+
+//Z-indexes
+@import './modules/z_index.less';
+
+//Misc
+@import './modules/misc.less';
+
+/*------------------------------------*\
+    #Modules
+\*------------------------------------*/
+
+/**
+ * General
+ */
+
+// Main Layout
+@import './modules/layout.less';
+
+// Viewport
+@import './modules/view.less';
+
+//Typography
+@import './modules/typography.less';
+
+//Buttons
+@import './modules/buttons.less';
+
+//Form Elements
+@import './modules/form_elements.less';
+
+//Tables
+@import './modules/tables.less';
+
+/**
+ * Components
+ */
+
+//Login
+@import './modules/login.less';
+
+/*------------------------------------*\
+    #Print
+\*------------------------------------*/
+
+//Print
+@import './modules/print.less';
+
+/*------------------------------------*\
+    #Custom/Shame
+\*------------------------------------*/
+
+#app-container {
+  height: 100%;
+}
+
+.headline {
+  font-size: 55px;
+  line-height: normal;
+  letter-spacing: -.8px;
+  font-weight: 400;
+}
+
+.jumbotron {
+  overflow: visible;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  // For nav tabs inside jumbotron
+  .nav-tabs-linetriangle {
+      &:after {
+        border-bottom: 0;
+      }
+
+     & > li.active > a:after {
+      border-top-color: @color-master-lighter;
+    }
+  }
+}
+
+td {
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.jumbotron {
+  .subheader {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family:'Montserrat';
+    font-size: 13px;
+    color:fade(@color-master-dark, 35%);
+  }
+}
+
+.breadcrumb {
+  padding-top: 0;
+  padding-bottom: 5px;
+
+  li:last-child a {
+    font-weight: 600;
+    color:#0090d9;
+  }
+}
+
+.milestones {
+  &.done {
+    .milestone-amount .hint-text {
+      text-decoration: line-through;
+    }
+  }
+  .timeline {
+    padding-top: 0;
+    margin-left: 120px;
+  }
+}
+
+.milestone-amount {
+  position: absolute;
+  width: 100px;
+  left: -120px;
+  top: 13px;
+  text-align: right;
+}
+
+.panel {
+
+  h3 {
+    line-height: normal;
+    margin: 0;
+  }
+
+  &[class*=bg-] {
+    h3 {
+      color: white;
+    }
+  }
+}
+
+.card {
+  .card-description {
+    > *:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+  &.share {
+    .card-header {
+      border-bottom: 1px solid @color-master-lighter;
+
+      &:hover {
+        background: none;
+        cursor: default;
+        h6 {
+          opacity: .45;
+        }
+      }
+    }
+  }
+}
