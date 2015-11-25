@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
+const shortcutIconDir = '../../public/images/icons/shortcuts';
+
+require('../less/main.less');
+
+debugger;
+require(shortcutIconDir + '/60.png')
+
 export default class App extends Component {
   render() {
     return (
@@ -34,26 +41,22 @@ export default class App extends Component {
             // Icons
             {
               rel: 'shortcut icon',
-              href: '/images/icons/shortcuts/favicon.ico'
-            },
-            {
-              rel: 'apple-touch-icon',
-              href: '/images/icons/shortcuts/60.png'
+              href: require(`${shortcutIconDir}/favicon.ico`)
             },
             {
               rel: 'apple-touch-icon',
               size: '76x76',
-              href: '/images/icons/shortcuts/76.png'
+              href: require(`${shortcutIconDir}/76.png`)
             },
             {
               rel: 'apple-touch-icon',
               size: '120x120',
-              href: '/images/icons/shortcuts/120.png'
+              href: require(`${shortcutIconDir}/120.png`)
             },
             {
               rel: 'apple-touch-icon',
               size: '152x152',
-              href: '/images/icons/shortcuts/152.png'
+              href: require(`${shortcutIconDir}/152.png`)
             }
           ]}
         />

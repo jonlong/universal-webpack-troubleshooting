@@ -3,7 +3,9 @@ import path from 'path';
 import webpack from 'webpack';
 import { APP_PATHS, APP_SETTINGS, RELATIVE_APP_PATHS } from '../config';
 import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
+import _ from 'lodash';
 
+const rootDir = path.resolve(__dirname, '..');
 /**
  * Webpack Isomorphic Tools
  *
@@ -40,24 +42,22 @@ function createBabelLoaderQuery() {
 
   devConfig = config.env && config.env.development || {};
 
-  query = Object.assign({}, config, devConfig);
+  query = _.assign({}, config, devConfig);
 
   delete query.env;
 
   return query;
 };
 
-console.log('webpack config context', path.resolve(__dirname, '..'));
-
 /**
  * Webpack Config
  */
-
 module.exports = {
 
   // Enable Source Maps (most performative option chosen)
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval',
 
+  // Resolve all relative paths from the project root folder
   context: path.resolve(__dirname, '..'),
 
   entry: {
@@ -102,9 +102,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: [
-          /node_modules/,
-          /dist/,
-          /tests/
+          '/node_modules/'
         ],
         loaders: [ `babel?${JSON.stringify(babelLoaderQuery)}` ]
       },
@@ -116,7 +114,6 @@ module.exports = {
 
       {
         test: /\.less$/,
-        include: APP_PATHS.less.default,
         loaders: [
           'style-loader',
           'css-loader?importLoaders=2&sourceMap',
@@ -152,6 +149,7 @@ module.exports = {
 
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
+        include: APP_PATHS.public.images,
         loader: 'url-loader?limit=10240'
       }
     ]

@@ -34,7 +34,8 @@ function makeAppPaths(APP_NAME, cwd) {
       functional: path.join(testsPath, 'functional')
     },
     public: {
-      default: path.join(cwd, 'public')
+      default: publicPath,
+      images: path.join(publicPath, 'images')
     },
     build: {
       default: buildPath,

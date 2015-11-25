@@ -3,6 +3,7 @@ webpack-stats.json
 npm-debug.log
 
 /node_modules
+/public/dist
 
 /src/components/*
 !/src/components/App.jsx

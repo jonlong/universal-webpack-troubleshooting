@@ -11,7 +11,8 @@ module.exports = {
         'jpeg',
         'jpg',
         'png',
-        'gif'
+        'gif',
+        'ico'
       ],
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     },
