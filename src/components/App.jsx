@@ -5,8 +5,11 @@ const shortcutIconDir = '../../public/images/icons/shortcuts';
 
 require('../less/main.less');
 
-debugger;
-require(shortcutIconDir + '/60.png')
+// require()d successfully
+require('../../public/images/icons/shortcuts/60.png');
+
+// results in 'asset not found'
+require(`${shortcutIconDir}/76.png`);
 
 export default class App extends Component {
   render() {
@@ -42,11 +45,6 @@ export default class App extends Component {
             {
               rel: 'shortcut icon',
               href: require(`${shortcutIconDir}/favicon.ico`)
-            },
-            {
-              rel: 'apple-touch-icon',
-              size: '76x76',
-              href: require(`${shortcutIconDir}/76.png`)
             },
             {
               rel: 'apple-touch-icon',
